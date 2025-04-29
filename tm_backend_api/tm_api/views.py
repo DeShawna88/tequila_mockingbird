@@ -7,17 +7,17 @@ from .models import ShoppingList
 
 # Create your views here.
 class IngredientList(generics.ListCreateAPIView):
-    queryset = Ingredient.objects.all().order_by('ingredient_ID')
+    queryset = Ingredient.objects.all().order_by('ingredient_id')
     serializer_class = IngredientSerializer
 
 class IngredientDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Ingredient.objects.all().order_by('ingredient_ID')
+    queryset = Ingredient.objects.all().order_by('ingredient_id')
     serializer_class = IngredientSerializer
 
-class ShoppingListList(generics.ListCreateAPIView):
-    queryset = ShoppingList.objects.all().order_by('shopping_ID')
+class Shopping_ListList(generics.ListCreateAPIView):
+    queryset = ShoppingList.objects.all().order_by('shopping_id')
     serializer_class = ShoppingListSerializer
 
-class ShoppingListDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = ShoppingList.objects.all().order_by('shopping_ID')
+class Shopping_ListDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ShoppingList.objects.all().order_by('shopping_id')
     serializer_class = ShoppingListSerializer
