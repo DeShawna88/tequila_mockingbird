@@ -82,8 +82,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'tequila_mockingbird',
-        'USER': 'ubuntu',
-        'PASSWORD': 'ubuntu',
+        'USER': 'shawnade',
+        'PASSWORD': 'shawnade',
         'HOST': 'localhost'
     }
 }
