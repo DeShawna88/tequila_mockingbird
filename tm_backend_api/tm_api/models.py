@@ -15,3 +15,23 @@ class ShoppingList(models.Model):
     shopping_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     ingredients_list = ArrayField(models.CharField(max_length=300),blank=True,null=True)
+
+class Recipe(models.Model):
+    recipe_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50)
+    instructions = models.TextField()
+    ingredients = models.ManyToManyField(Ingredient, through="RecipeIngredient")
+    user = models.ForeignKey('User', on_delete=models.CASCADE)
+
+class RecipeIngredient(models.Model):
+    recipe = models.ForeignKey('Recipe', on_delete=models.CASCADE)
+    ingredient = models.ForeignKey('Ingredient', on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+
+class User(models.Model):
+    user_id = models.IntegerField()
+    name = models.CharField(max_length=75)
+    email = models.EmailField(unique=True)
+    address = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=15)
+    shopping_id = models.ForeignKey('ShoppingList', on_delete=models.CASCADE)
