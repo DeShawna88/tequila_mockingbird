@@ -29,9 +29,9 @@ class RecipeIngredient(models.Model):
     quantity = models.IntegerField()
 
 class User(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=75)
     email = models.EmailField(unique=True)
     address = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=15)
-    shopping_id = models.ForeignKey('ShoppingList', on_delete=models.CASCADE)
+    shopping_list = models.ForeignKey('ShoppingList', on_delete=models.CASCADE)
