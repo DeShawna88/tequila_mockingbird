@@ -28,4 +28,4 @@ class RecipeIngredientSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('user_id', 'name', 'email', 'address', 'phone_number', 'shopping_id')
+        fields = ('user_id', 'name', 'email', 'address', 'phone_number', 'shopping_list')
