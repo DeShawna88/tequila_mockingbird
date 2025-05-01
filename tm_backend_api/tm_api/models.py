@@ -6,15 +6,19 @@ class Ingredient(models.Model):
     ingredient_id = models.AutoField(primary_key=True)
     name_of_ingredient = models.CharField(max_length=20)
     type = models.CharField(max_length=10)
-    quantity = models.IntegerField()
     recommended_drink = models.CharField(max_length=100)
-    alt_ingredient = models.IntegerField()
+    alt_ingredient = models.IntegerField(null=True, blank=True)
     is_bought = models.BooleanField()
 
 class ShoppingList(models.Model):
     shopping_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     ingredients_list = ArrayField(models.CharField(max_length=300),blank=True,null=True)
+
+class ShoppingListIngredient(models.Model):
+    shopping_list = models.ForeignKey('ShoppingList', on_delete=models.CASCADE)
+    ingredient = models.ForeignKey('Ingredient', on_delete=models.CASCADE)
+    quantity = models.IntegerField()
 
 class Recipe(models.Model):
     recipe_id = models.AutoField(primary_key=True)
