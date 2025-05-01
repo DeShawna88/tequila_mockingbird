@@ -9,7 +9,7 @@ from .models import User
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
-        fields = ('ingredient_id', 'name_of_ingredient', 'type', 'quantity', 'recommended_drink', 'alt_ingredient', 'is_bought',)
+        fields = ('ingredient_id', 'name_of_ingredient', 'type', 'recommended_drink', 'alt_ingredient', 'is_bought',)
 
 class ShoppingListSerializer(serializers.ModelSerializer):
     class Meta:
