@@ -14,7 +14,7 @@ class ShoppingList(models.Model):
     shopping_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     user = models.ForeignKey('User', on_delete=models.CASCADE)
-    ingredients_list = models.ManyToManyField(Ingredient, through="RecipeIngredient")
+    ingredients_list = models.ManyToManyField(Ingredient, through="ShoppingListIngredient")
 
 class ShoppingListIngredient(models.Model):
     shopping_list = models.ForeignKey('ShoppingList', on_delete=models.CASCADE)
