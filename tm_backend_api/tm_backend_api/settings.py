@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-vnu!(u03leyoo8vor-qyqgfp*qc8r%r2(c)w6slm)s@$m339)g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '18.234.134.4']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '18.234.134.4']
 
 
 # Application definition
@@ -33,6 +33,12 @@ ALLOWED_HOSTS = ['localhost', '18.234.134.4']
 INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',  
+    'django.contrib.sites',
     'tm_api',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -49,9 +54,13 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# SITE_ID configuration
+SITE_ID = 1 
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -82,8 +91,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'tequila_mockingbird',
-        'USER': 'shawnade',
-        'PASSWORD': 'shawnade',
+        'USER': 'yonasmisganaw',
+        'PASSWORD': 'Y1129112901m',
         'HOST': 'localhost'
     }
 }
