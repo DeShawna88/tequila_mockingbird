@@ -14,7 +14,7 @@ class IngredientSerializer(serializers.ModelSerializer):
 class ShoppingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShoppingList
-        fields = ('shopping_id', 'name', 'ingredients_list')
+        fields = ('shopping_id', 'name', 'user', 'ingredients_list')
 
 class ShoppingListIngredientSerializer(serializers.ModelSerializer):
     class Meta:
