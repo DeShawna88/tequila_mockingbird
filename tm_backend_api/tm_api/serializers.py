@@ -19,7 +19,7 @@ class ShoppingListSerializer(serializers.ModelSerializer):
 class ShoppingListIngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShoppingListIngredient
-        fields = ('shopping_list', 'ingredient', 'quantity')
+        fields = ('id', 'shopping_list', 'ingredient', 'quantity')
 
 class RecipeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,9 +29,9 @@ class RecipeSerializer(serializers.ModelSerializer):
 class RecipeIngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = RecipeIngredient
-        fields = ('recipe', 'ingredient', 'quantity')
+        fields = ('id', 'recipe', 'ingredient', 'quantity')
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('user_id', 'name', 'email', 'address', 'phone_number')
+        fields = ('user_id', 'name', 'email', 'address', 'phone_number', 'password')

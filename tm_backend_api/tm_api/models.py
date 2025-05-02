@@ -37,5 +37,6 @@ class User(models.Model):
     user_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=75)
     email = models.EmailField(unique=True)
-    address = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=15)
+    address = models.CharField(max_length=100, null=True, blank=True)
+    phone_number = models.CharField(max_length=15, null=True, blank=True)
+    password = models.CharField(max_length=100)
