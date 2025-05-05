@@ -16,12 +16,12 @@ Including another URLconf
 """
 # Backend (tm_backend_api/urls.py)
 from django.contrib import admin
-from django.urls import path, include
+
+from django.urls import path, include  # Import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('tm_api.urls')),  # Includes URLs from your 'tm_api' app
-    path('api/auth/registration/', include('dj_rest_auth.registration.urls')),
-    path('api/auth/', include('dj_rest_auth.urls')),
+    path('api/', include('tm_api.urls')),  # Include the app's URLs under 'api/'
+
 ]
 

@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-vnu!(u03leyoo8vor-qyqgfp*qc8r%r2(c)w6slm)s@$m339)g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False # Changed to True for development
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '18.234.134.4']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.1.100']
+
 
 
 # Application definition
@@ -34,55 +35,52 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
-    'dj_rest_auth',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',  
-    'django.contrib.sites',
     'tm_api',
     'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
-MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.contenttypes',
+    'django.contrib.auth'
 ]
 
+MIDDLEWARE = [
+        'django.middleware.security.SecurityMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'corsheaders.middleware.CorsMiddleware',  # Ensure this is present
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',  # Add this line
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ]
+
 # SITE_ID configuration
-SITE_ID = 1 
+SITE_ID = 1
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'tm_backend_api.urls'
 
 TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',  # Add this line
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
         },
-    },
-]
+    ]
 
 WSGI_APPLICATION = 'tm_backend_api.wsgi.application'
 
+AUTH_USER_MODEL = 'tm_api.User'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
