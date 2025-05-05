@@ -27,7 +27,6 @@ class ShoppingListIngredientSerializer(serializers.ModelSerializer):
             model = ShoppingListIngredient
             fields = ('id', 'shopping_list', 'ingredient', 'quantity')
 
-
 class RecipeSerializer(serializers.ModelSerializer):
         class Meta:
             model = Recipe

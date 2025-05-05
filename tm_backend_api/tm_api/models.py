@@ -26,13 +26,13 @@ class UserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
-class User(AbstractBaseUser):
-    id = models.AutoField(primary_key=True)
+class User(models.Model):
+    user_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=75)
     email = models.EmailField(unique=True)
-    name = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=20)
-    address = models.CharField(max_length=200)
-    date_joined = models.DateTimeField(default=timezone.now)
+    address = models.CharField(max_length=100, null=True, blank=True)
+    phone_number = models.CharField(max_length=15, null=True, blank=True)
+    password = models.CharField(max_length=100)
 
     objects = UserManager()
 
@@ -69,15 +69,13 @@ class Ingredient(models.Model):
 class ShoppingList(models.Model):
     shopping_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey('User', on_delete=models.CASCADE)
     ingredients_list = models.ManyToManyField(Ingredient, through="ShoppingListIngredient")
 
-
 class ShoppingListIngredient(models.Model):
-    shopping_list = models.ForeignKey(ShoppingList, on_delete=models.CASCADE)
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    shopping_list = models.ForeignKey('ShoppingList', on_delete=models.CASCADE)
+    ingredient = models.ForeignKey('Ingredient', on_delete=models.CASCADE)
     quantity = models.IntegerField()
-
 
 class Recipe(models.Model):
     recipe_id = models.AutoField(primary_key=True)

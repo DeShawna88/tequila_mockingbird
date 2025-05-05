@@ -111,8 +111,6 @@ class UserDetail(generics.RetrieveUpdateAPIView): # Changed Class Name
         """
         return self.request.user
 
-
-
 class IngredientList(generics.ListCreateAPIView):
     """
     View for listing and creating ingredients for the current user.
@@ -226,12 +224,16 @@ class Shopping_List_IngredientDetail(generics.RetrieveUpdateDestroyAPIView): # C
         """
         return ShoppingListIngredient.objects.filter(shopping_list__user=self.request.user).order_by('id')
 
+class Shopping_List_IngredientList(generics.ListCreateAPIView):
+    queryset = ShoppingListIngredient.objects.all().order_by('id')
+    serializer_class = ShoppingListIngredientSerializer
 
+class Shopping_List_IngredientDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ShoppingListIngredient.objects.all().order_by('id')
+    serializer_class = ShoppingListIngredientSerializer
 
-class RecipeList(generics.ListCreateAPIView): # Changed Class Name
-    """
-    View for listing and creating recipes for the current user.
-    """
+class RecipeList(generics.ListCreateAPIView):
+    queryset = Recipe.objects.all().order_by('recipe_id')
     serializer_class = RecipeSerializer
     permission_classes = [IsAuthenticated]
 
